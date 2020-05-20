@@ -1,8 +1,94 @@
-## Requirement
- add how to set up node
-### 启动脚本
-```node convert.js```
+## What for
 
-##### 在src目录下编辑文件, fragment及变量会自动插入文档中, 预览进入site文件夹
-##### 变量命名{{var.a.b}}, 变量查找从子文件夹到父文件夹递归查找
-##### 片段命名{{fragment.chapter1.root.md}}, 片段从fragment文件夹自上而下查找
+manage product doc files system, especially when multi language file is maintained. Good to use with [Gatsby](https://www.gatsbyjs.org/) or other markdown to html generater.
+
+## Features
+
+- auto add|change|delete target file | directory in **/site** when origin file | directory is add|change|delete in **/src**;
+- varible is supported;
+- fragment is supported;
+- varible in fragment is supported;
+- markdown to html is supported;
+  ex{{var.title}}.
+- unrelated file is filtered when generater target file;
+
+## Environment Requirement
+
+[node](https://nodejs.org/zh-cn/download/)
+
+## Getting started
+
+Install with git or [click to download zip](https://github.com/talentAN/markdown2markdown/archive/master.zip)
+
+`git clone git@github.com:talentAN/markdown2markdown.git`
+
+start watcher
+`node start.js`
+
+## Examples
+
+1. use variables;
+
+```javascript
+// origin(src/test.md):
+### This is {{var.name}};
+
+// variableFile(src/variables.json)
+{"name":"Tom"}
+
+// will turn to target(site/test.md)
+### This is Tom;
+```
+
+2. use fragment and variables;
+
+```javascript
+// origin(src/test.md):
+### This is {{var.name}};
+{{fragment/card.md}}
+{{fragment/warn.md}}
+
+// variableFile (src/variables.json)
+{"name":"Tom", "info":{ "phone":"1234567", "email":"xxx@gmail.com"}}
+
+// fragmentFile (src/fragment/card.json)
+###### name:{{var.name}}
+###### email:{{var.email}}
+
+// fragmentFile (src/fragment/warn.json)
+###### the info should keep confidential
+
+// will turn to target(site/test.md)
+### This is Tom ;
+###### name:Tom
+###### email:xxx@gmail.com
+###### the info should keep confidential
+```
+
+3. use multilayer variables
+
+```javascript
+// origin(src/user/info.md):
+### This is {{var.name}};
+{{fragment/card.md}}
+{{fragment/warn.md}}
+
+// variableFile (src/variables.json)
+{"name":"Tom", "info":{"phone":"1234567", "email":"xxx@gmail.com"}}
+
+// variableFile (src/user/variables.json)
+{"name":"Alex", "info":{"phone":"9876543"}}
+
+// fragmentFile (src/fragment/card.json)
+###### name:{{var.name}}
+###### email:{{var.email}}
+
+// fragmentFile (src/fragment/warn.json)
+###### the info should keep confidential
+
+// will turn to target(site/test.md)
+### This is Alex;
+###### name:Alex
+###### email:xxx@gmail.com
+###### the info should keep confidential
+```
