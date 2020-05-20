@@ -10,7 +10,7 @@ manage product doc files system, especially when multi language file is maintain
 - varible in fragment is supported;
 - markdown to html is supported;
   ex{{var.title}}.
-- unrelated file is filtered when generater target file;
+- ignore is configurable. ignore file | directory is filtered when generater target file | directory;
 
 ## Environment Requirement
 
