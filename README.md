@@ -4,7 +4,7 @@ manage product doc files system, especially when multi language file is maintain
 
 ## Features
 
-- auto add|change|delete target file | directory in **/site** when origin file | directory is add|change|delete in **/src**;
+- auto add | change | delete target file | directory in **/site** when origin file | directory is add | change | delete in **/src**;
 - varible is supported;
 - fragment is supported;
 - varible in fragment is supported;
@@ -23,6 +23,7 @@ Install with git or [click to download zip](https://github.com/talentAN/markdown
 `git clone git@github.com:talentAN/markdown2markdown.git`
 
 start watcher
+
 `node start.js`
 
 ## Examples
