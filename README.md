@@ -8,7 +8,7 @@ Auto generater target markdowns with use of easy template and variable. Good to 
 ## Recommended For
 
 - Product Documentation Engineer;
-- Font-end developers who needs markdown transformer
+- Front-end developers who needs markdown transformer
 
 ## Features
 
